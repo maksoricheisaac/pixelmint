@@ -1,62 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Check, Sparkles, Zap, Crown } from "lucide-react";
+import { Sparkles} from "lucide-react";
 import { SimplePricing } from "@/components/mvpblocks/simple-pricing";
 
-const plans = [
-  {
-    name: "Free",
-    price: "0€",
-    period: "/mois",
-    description: "Parfait pour découvrir PixelMint",
-    icon: Sparkles,
-    features: [
-      "10 générations par mois",
-      "Résolution standard (512x512)",
-      "Accès à la galerie communautaire",
-      "Support par email"
-    ],
-    popular: false,
-    ctaText: "Commencer gratuitement"
-  },
-  {
-    name: "Pro",
-    price: "19€",
-    period: "/mois",
-    description: "Pour les créatifs qui veulent plus",
-    icon: Zap,
-    features: [
-      "500 générations par mois",
-      "Haute résolution (1024x1024)",
-      "Styles avancés et effets",
-      "Historique illimité",
-      "Téléchargements sans filigrane",
-      "Support prioritaire"
-    ],
-    popular: true,
-    ctaText: "Essayer Pro"
-  },
-  {
-    name: "Premium",
-    price: "49€",
-    period: "/mois", 
-    description: "Pour les professionnels et équipes",
-    icon: Crown,
-    features: [
-      "Générations illimitées",
-      "Ultra haute résolution (2048x2048)",
-      "Accès anticipé aux nouveautés",
-      "Styles personnalisés",
-      "API et intégrations",
-      "Formation et support dédié",
-      "Licence commerciale étendue"
-    ],
-    popular: false,
-    ctaText: "Choisir Premium"
-  }
-];
 
 export default function Pricing() {
   return (

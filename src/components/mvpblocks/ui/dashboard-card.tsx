@@ -1,8 +1,8 @@
 'use client';
 
-import { memo } from 'react';
+import { ForwardRefExoticComponent, memo, RefAttributes } from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp } from 'lucide-react';
+import { LucideProps, TrendingUp } from 'lucide-react';
 
 interface DashboardCardProps {
   stat: {
@@ -10,7 +10,7 @@ interface DashboardCardProps {
     value: string;
     change: string;
     changeType: 'positive' | 'negative';
-    icon: any;
+    icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
     color: string;
     bgColor: string;
   };

@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Sparkles, Mail, Lock, User, Github, Loader2, X } from "lucide-react";
+import { Sparkles, Mail, Lock, User, Github, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { signIn, signUp } from "@/lib/auth-client";
 import { toast } from "sonner";
@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import Image from "next/image";
+
 
 // Schéma de validation avec Zod
 const registerSchema = z.object({
@@ -359,11 +359,3 @@ export default function Register() {
   );
 }
 
-async function convertImageToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onloadend = () => resolve(reader.result as string);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}

@@ -10,7 +10,6 @@ import {
   LogOut, 
   CreditCard, 
   Image as ImageIcon,
-  ChevronDown,
   Bell
 } from "lucide-react";
 import Link from "next/link";
@@ -46,7 +45,8 @@ export const Header = () => {
     try {
       await signOut();
       toast.success("Déconnexion réussie");
-    } catch (error) {
+    } catch (e) {
+      void e
       toast.error("Erreur lors de la déconnexion");
     }
   };

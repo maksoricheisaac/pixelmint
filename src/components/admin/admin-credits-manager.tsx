@@ -52,6 +52,7 @@ export function AdminCreditsManager() {
 
   useEffect(() => {
     loadUsers()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleAddCredits = async () => {

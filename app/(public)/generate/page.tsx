@@ -44,7 +44,8 @@ export default function Generate() {
         window.URL.revokeObjectURL(url)
         document.body.removeChild(a)
         toast.success("Image générée avec succès !")
-      } catch (error) {
+      } catch (e) {
+        void e
         toast.error("Erreur lors du téléchargement")
       }
     }
@@ -55,7 +56,8 @@ export default function Generate() {
       try {
         await navigator.clipboard.writeText(formState.uploadedUrl)
         toast.success("URL copiée dans le presse papier")
-      } catch (error) {
+      } catch (e) {
+        void e
         toast.error("Erreur lors de la copie")
       }
     }

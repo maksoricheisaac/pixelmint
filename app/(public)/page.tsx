@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
+ 
 
 import {HeroGeometric} from "@/components/mvpblocks/geometric-hero";
 import { TestimonialsCarousel } from "@/components/mvpblocks/testimonials-carousel";

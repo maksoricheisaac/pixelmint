@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Pacifico } from 'next/font/google';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 import Link from 'next/link';
 
 const pacifico = Pacifico({

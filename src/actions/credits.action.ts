@@ -21,7 +21,7 @@ const addCreditsSchema = z.object({
 
 export const checkCredits = actionClient
   .inputSchema(checkCreditsSchema)
-  .action(async ({ parsedInput }) => {
+  .action(async ({ }) => {
     const session = await auth.api.getSession({
       headers: await headers(),
     })
@@ -46,7 +46,7 @@ export const checkCredits = actionClient
 
 export const consumeCredits = actionClient
   .inputSchema(consumeCreditsSchema)
-  .action(async ({ parsedInput }) => {
+  .action(async ({  }) => {
     const session = await auth.api.getSession({
       headers: await headers(),
     })

@@ -14,7 +14,7 @@ interface CreditsDisplayProps {
   userId: string
 }
 
-export function CreditsDisplay({ userId }: CreditsDisplayProps) {
+export function CreditsDisplay({ }: CreditsDisplayProps) {
   const [creditsData, setCreditsData] = useState<CreditsData | null>(null)
   const [loading, setLoading] = useState(true)
 
