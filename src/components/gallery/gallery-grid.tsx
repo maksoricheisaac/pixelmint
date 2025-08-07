@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
@@ -148,15 +148,15 @@ export function GalleryGrid() {
         {filteredImages.map((image) => (
           <Card key={image.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-0">
-              <div className="relative aspect-square overflow-hidden rounded-t-lg">
+              <div className="relative w-full h-full min-h-[250px] max-h-none overflow-hidden rounded-t-lg flex">
                 <Image
                   src={image.url}
                   alt={image.prompt}
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                  style={{ position: 'absolute', inset: 0 }}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                
                 {/* Actions au survol */}
                 <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex space-x-2">
                   <Button
@@ -176,7 +176,6 @@ export function GalleryGrid() {
                     <Trash2 className="h-4 w-4 text-red-600" />
                   </Button>
                 </div>
-
                 {/* Date */}
                 <Badge
                   variant="secondary"
@@ -185,8 +184,9 @@ export function GalleryGrid() {
                   {new Date(image.createdAt).toLocaleDateString('fr-FR')}
                 </Badge>
               </div>
-              
-              <div className="p-4">
+            </CardContent>
+            <CardFooter>
+               <div className="p-4">
                 <p className="text-sm text-gray-900 mb-2 line-clamp-2">
                   {image.prompt}
                 </p>
@@ -194,7 +194,7 @@ export function GalleryGrid() {
                   {new Date(image.createdAt).toLocaleString('fr-FR')}
                 </div>
               </div>
-            </CardContent>
+            </CardFooter>
           </Card>
         ))}
       </div>

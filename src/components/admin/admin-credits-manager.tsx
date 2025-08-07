@@ -8,7 +8,8 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Search, Plus, Users, Coins } from 'lucide-react'
 import { addCredits } from '@/actions/credits.action'
-import { useToast } from '@/hooks/use-toast'
+import { toast } from 'sonner'
+
 
 interface User {
   id: string
@@ -25,7 +26,7 @@ export function AdminCreditsManager() {
   const [creditsToAdd, setCreditsToAdd] = useState('')
   const [reason, setReason] = useState('')
   const [addingCredits, setAddingCredits] = useState(false)
-  const { toast } = useToast()
+
 
   // Fonction pour charger les utilisateurs (simulation)
   const loadUsers = async () => {
@@ -40,11 +41,7 @@ export function AdminCreditsManager() {
       setUsers(mockUsers)
     } catch (error) {
       console.error('Erreur lors du chargement des utilisateurs:', error)
-      toast({
-        title: 'Erreur',
-        description: 'Impossible de charger les utilisateurs',
-        variant: 'destructive',
-      })
+      toast.error('Impossible de charger les utilisateurs')
     } finally {
       setLoading(false)
     }
@@ -52,7 +49,7 @@ export function AdminCreditsManager() {
 
   useEffect(() => {
     loadUsers()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+   
   }, [])
 
   const handleAddCredits = async () => {
@@ -60,11 +57,7 @@ export function AdminCreditsManager() {
 
     const credits = parseInt(creditsToAdd)
     if (isNaN(credits) || credits <= 0) {
-      toast({
-        title: 'Erreur',
-        description: 'Veuillez entrer un nombre de crédits valide',
-        variant: 'destructive',
-      })
+      toast.error('Veuillez entrer un nombre valide de crédits')
       return
     }
 
@@ -83,11 +76,8 @@ export function AdminCreditsManager() {
             ? { ...user, credits: result.data ? result.data.user.credits : 0 }
             : user
         ))
-        
-        toast({
-          title: 'Succès',
-          description: `${credits} crédits ajoutés à ${selectedUser.name}`,
-        })
+
+        toast.success(`Crédits ajoutés avec succès à ${selectedUser.name}`)
 
         // Réinitialiser le formulaire
         setSelectedUser(null)
@@ -96,11 +86,7 @@ export function AdminCreditsManager() {
       }
     } catch (error) {
       console.error('Erreur lors de l\'ajout de crédits:', error)
-      toast({
-        title: 'Erreur',
-        description: 'Impossible d\'ajouter les crédits',
-        variant: 'destructive',
-      })
+      toast.error('Erreur lors de l\'ajout de crédits')
     } finally {
       setAddingCredits(false)
     }

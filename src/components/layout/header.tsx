@@ -5,12 +5,8 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { 
   Menu, 
   Sparkles, 
-  User, 
-  Settings, 
   LogOut, 
-  CreditCard, 
   Image as ImageIcon,
-  Bell
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -24,8 +20,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
+import { ModeToggle } from "./mode-toggle";
 
 const navigation = [
   { name: "Accueil", href: "/" },
@@ -68,7 +64,7 @@ export const Header = () => {
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2 group">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg primary-gradient group-hover:scale-105 transition-transform">
-                <Sparkles className="h-5 w-5 text-white" />
+                <Sparkles className="h-5 w-5 text-black dark:text-white" />
               </div>
               <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                 PixelMint
@@ -97,13 +93,6 @@ export const Header = () => {
           <div className="hidden md:flex items-center space-x-3">
             {session ? (
               <>
-                {/* Notifications */}
-                <Button variant="ghost" size="icon" className="relative">
-                  <Bell className="h-4 w-4" />
-                  <Badge className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 text-xs">
-                    3
-                  </Badge>
-                </Button>
 
                 {/* User Menu */}
                 <DropdownMenu>
@@ -129,28 +118,11 @@ export const Header = () => {
                       </div>
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem asChild>
-                      <Link href="/dashboard" className="cursor-pointer">
-                        <User className="mr-2 h-4 w-4" />
-                        <span>Tableau de bord</span>
-                      </Link>
-                    </DropdownMenuItem>
+                    
                     <DropdownMenuItem asChild>
                       <Link href="/gallery" className="cursor-pointer">
                         <ImageIcon className="mr-2 h-4 w-4" />
                         <span>Mes images</span>
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/pricing" className="cursor-pointer">
-                        <CreditCard className="mr-2 h-4 w-4" />
-                        <span>Abonnement</span>
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/settings" className="cursor-pointer">
-                        <Settings className="mr-2 h-4 w-4" />
-                        <span>Paramètres</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
@@ -178,6 +150,7 @@ export const Header = () => {
                 </Link>
               </>
             )}
+            <ModeToggle />
           </div>
 
           {/* Mobile Navigation */}
@@ -229,24 +202,14 @@ export const Header = () => {
                       </div>
                       
                       <div className="space-y-2">
-                        <Link href="/dashboard" onClick={() => setIsOpen(false)}>
-                          <Button variant="outline" className="w-full justify-start">
-                            <User className="mr-2 h-4 w-4" />
-                            Tableau de bord
-                          </Button>
-                        </Link>
+                       
                         <Link href="/gallery" onClick={() => setIsOpen(false)}>
                           <Button variant="outline" className="w-full justify-start">
                             <ImageIcon className="mr-2 h-4 w-4" />
                             Mes images
                           </Button>
                         </Link>
-                        <Link href="/settings" onClick={() => setIsOpen(false)}>
-                          <Button variant="outline" className="w-full justify-start">
-                            <Settings className="mr-2 h-4 w-4" />
-                            Paramètres
-                          </Button>
-                        </Link>
+                        
                         <Button 
                           variant="outline" 
                           className="w-full justify-start text-red-600 border-red-200 hover:bg-red-50"
@@ -272,6 +235,7 @@ export const Header = () => {
                           Commencer
                         </Button>
                       </Link>
+                      <ModeToggle />
                     </div>
                   )}
                 </div>
